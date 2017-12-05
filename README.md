@@ -9,7 +9,7 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 
 ## TBD:
 * Start on the program.
-  * Implement
+  * Implement the YAML data loading.
   * Implement the "rooms" system.
   * Implement a door key system and a inventory for keys. (a keyring?)
   * Implement character stats.
