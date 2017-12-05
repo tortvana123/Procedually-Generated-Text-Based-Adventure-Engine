@@ -1,11 +1,12 @@
 # "Procedually Generated" Text Based Adventure Engine
 A GUI game engine for a procedually generatated text adventure, which is intended to take place in a "dungeon" type enviroment.
 
+[Flowchart](https://drive.google.com/file/d/1-3sDHsvUsojxO-ffMaqPH-wM9JfDgNCa/view?usp=sharing)
+
 ## Required third party modules:
 * ruamel.yaml for YAML support (Game Data)
 * appjar for simple GUI
 
-[Flowchart](https://drive.google.com/file/d/1-3sDHsvUsojxO-ffMaqPH-wM9JfDgNCa/view?usp=sharing)
 
 ## TBD:
 * Start on the program.
