@@ -1,14 +1,8 @@
-# Comments in YAML look like this.
-
-################
-# SCALAR TYPES #
-################
-
-# Our root object (which continues for the entire document) will be a map,
-# which is equivalent to a dictionary, hash or object in other languages.
-key: value
-a_number_value: 100
-scientific_notation: 1e+12
-# The number 1 will be interpreted as a number, not a boolean. if you want
-# it to be interpreted as a boolean, use true
-boolean: true
+#Title Screen
+title_titlebar: "GAME"
+title_label: "\"Welcome to the Dungeon\""
+title_description: | # Pipes for multiline
+    This is a sample title screen.
+    Here is some information.
+    More information.
+    Press "Start Game" to start the game or "Quit" to quit.
