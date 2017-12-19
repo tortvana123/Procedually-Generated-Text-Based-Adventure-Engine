@@ -3,11 +3,12 @@
 
 from ruamel import yaml
 from appJar import gui
+from random import choice
 #-----------------------------------------------------------------------------------------------------------------------------------------
 # Variables
 conf_file = "info.yaml"
 #-----------------------------------------------------------------------------------------------------------------------------------------
-#Functions
+#Functions and classes
 
 #YAML input/output, compatible with old and new versions of ruamel.yaml
 def yml_io(ser_type, istream=None): # ser_type - "serialize" data into YAML or "deserialize" data from YAML; istream - input data  
@@ -30,7 +31,7 @@ def yml_io(ser_type, istream=None): # ser_type - "serialize" data into YAML or "
             yml.dump(istream, ostream)
             return ostream
 
-# Intialize data from an info file
+# Intialize data from the data file.
 def init_data(): 
     global data
     with open(conf_file) as yaml_data:
@@ -38,17 +39,32 @@ def init_data():
 
 #Button function
 def press(btn):
-    if btn == "Quit":
-        raise SystemExit
+    if btn == "Start Game":
+        game()
+
+#Room class (WIP)
+"""class Room:
+
+    def __init__(self, name): #Data init
+        self.name = name
+
+    def enter_room(self):
+        print("")
+"""
+        
+# GAME (WIP)
+def game():
+    app.setLabel("Title_Label", choice(data["room_names"]))
+    app.setLabel("Message", choice(data["room_descriptions"]))
+
 # Title screen  
 def title_screen():
+    global app
     with gui(data["title_titlebar"]) as app:
         app.addLabel("Title_Label", data["title_label"])
-        app.addLabel("msg1", data["title_description"])
+        app.addLabel("Message", data["title_description"])
         app.addButton("Start Game", press)
-        app.addButton("Quit", press)
-        app.go()
-
+                 
 # Main
 def main():
     init_data()
