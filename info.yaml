@@ -1,7 +1,7 @@
 #Title Screen
 title_titlebar: "GAME TITLE"
 title_label: "\"Welcome to the Dungeon\""
-title_description: |- 
+title_description: |-
     This is a sample title screen.
     Here is some information.
     More information.
@@ -20,17 +20,17 @@ room_names:
 room_descriptions:
     - |-
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Praesent ligula eros, ultricies ac ante at, iaculis mollis dolor. 
-        Nullam gravida felis ut luctus rhoncus. Duis in imperdiet ipsum. 
-        Praesent malesuada dapibus turpis sit amet tempus. 
-        Pellentesque dapibus quam nisl. 
-        Fusce id placerat sem, tristique sagittis nisl. 
+        Praesent ligula eros, ultricies ac ante at, iaculis mollis dolor.
+        Nullam gravida felis ut luctus rhoncus. Duis in imperdiet ipsum.
+        Praesent malesuada dapibus turpis sit amet tempus.
+        Pellentesque dapibus quam nisl.
+        Fusce id placerat sem, tristique sagittis nisl.
     - |-
-        Proin urna sapien, fermentum eget odio at, luctus placerat metus. 
-        Vivamus nec lorem nulla. Aenean ipsum nunc, varius et ipsum vitae, 
-        maximus pharetra orci. Curabitur elementum, justo eu posuere iaculis, 
+        Proin urna sapien, fermentum eget odio at, luctus placerat metus.
+        Vivamus nec lorem nulla. Aenean ipsum nunc, varius et ipsum vitae,
+        maximus pharetra orci. Curabitur elementum, justo eu posuere iaculis,
         dolor nunc vulputate risus, in sagittis magna leo eu mauris.
     - |-
-        Suspendisse at ligula eu quam ornare consectetur quis in leo. 
-        Curabitur aliquet, diam nec tincidunt commodo, mauris ipsum euismod nisl, 
+        Suspendisse at ligula eu quam ornare consectetur quis in leo.
+        Curabitur aliquet, diam nec tincidunt commodo, mauris ipsum euismod nisl,
         et gravida lorem lectus eget erat. Nunc ullamcorper mattis varius.
