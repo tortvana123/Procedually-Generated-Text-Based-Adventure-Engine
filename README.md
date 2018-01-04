@@ -5,7 +5,7 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 
 ## Required third party modules:
 * ruamel.yaml for YAML support (Game Data)
-* appjar for simple GUI
+* appjar for simple GUI (needs TKinter as the master library)
 
 
 ## Roadmap:
