@@ -3,19 +3,21 @@
 # -----------------------------------------------------------------------
 import ruamel.yaml as yaml
 from appJar import gui
-from random import choice
+from random import choice, choices
 
 # -----------------------------------------------------------------------
 # Variables
 # -----------------------------------------------------------------------
 conf_file = "info.yaml"
+rooms = {}
+room_amount = 0
 # -----------------------------------------------------------------------
 # Functions and classes
 # -----------------------------------------------------------------------
 
 # ----
 # YAML input/output, compatible with old and new versions of ruamel.yaml
-def yml_io(ser_type,istream=None):  # ser_type - "serialize" data into YAML or "deserialize" data from YAML; istream - input data
+def yml_io(ser_type, istream=None):  # ser_type - "serialize" data into YAML or "deserialize" data from YAML; istream - input data
     ostream = ""
 
     if yaml.version_info < (0, 15):
@@ -52,18 +54,30 @@ def press(btn):
 # ----
 # Room class (WIP)
 class Room:
-
     def __init__(self, name):  # Data init
         self.name = name
+    def display_name(self):
+        print(self.name)
 
-    def enter_room(self):
-        print("")
-
-
+# ----
+# Room Generator
+def generate_room():
+	global data
+	global rooms
+	global room_amount
+	room_amount += 1
+	
+	room_type = choices(data["room_type"]) # To do - add chances to room types happening. random.randrange?
+	rooms[room_amount] = Room(room_type)
+	
+	
 # ----
 # GAME (WIP)
 def game():
-    pass
+    generate_room()
+    print(rooms)
+    for i in range(1,room_amount+1):
+        rooms[i].display_name()
 
     # app.setLabel("Title_Label", choice(data["room_names"]))
     # app.setLabel("Message", choice(data["room_descriptions"]))
@@ -88,4 +102,4 @@ def main():
 
 if __name__ == "__main__":  # If the file is used as a game, not a library
     main()
-#This is a test.
+# This is a test.

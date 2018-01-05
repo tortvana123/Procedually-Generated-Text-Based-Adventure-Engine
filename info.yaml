@@ -6,17 +6,11 @@ title_description: |-
     Here is some information.
     More information.
     Press "Start Game" to start the game.
-room_names:
-    - Room_1
-    - Room_2
-    - Room_3
-    - Room_4
-    - Room_5
-    - Room_6
-    - Room_7
-    - Room_8
-    - Room_9
-    - Room_10
+room_type:
+    - Cave
+    - Store
+    - Cavern
+    - Passage
 room_descriptions:
     - |-
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
