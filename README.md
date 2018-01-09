@@ -1,8 +1,6 @@
 # "Procedually Generated" Text Based Adventure Engine
 A GUI game engine for a procedually generatated text adventure, which is intended to take place in a "dungeon" type enviroment.
 
-[Flowchart](https://drive.google.com/file/d/1-3sDHsvUsojxO-ffMaqPH-wM9JfDgNCa/view?usp=sharing)
-
 ## Required third party modules:
 * ruamel.yaml for YAML support (Game Data)
 * appjar for simple GUI (needs TKinter as the master library)
@@ -15,6 +13,8 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 ### In Progress:
 * Implement the "rooms" system.
   * Basic room naming and descriptions. **_✓_**
+  * Moving between rooms
+  * Add dynamic room properties, with it adding things to do in a room.
 ### Future:
 * Implement a door key system and a inventory for keys. (a keyring?)
 * Implement character stats.
