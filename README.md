@@ -9,9 +9,13 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 
 
 ## Roadmap:
+Done:
 * Implement the YAML data loading. **_✓_**
 * Implement a title screen **_✓_**
+In Progress:
 * Implement the "rooms" system.
+  * Basic room naming and descriptions. **_✓_**
+Future:
 * Implement a door key system and a inventory for keys. (a keyring?)
 * Implement character stats.
 * Implement item inventory and character item slots.
