@@ -5,6 +5,9 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 * ruamel.yaml for YAML support (Game Data)
 * appjar for simple GUI (needs TKinter as the master library)
 
+## To-do list:
+* Redo the YAML import with try/except
+* Implement room generation into the Room class.
 
 ## Roadmap:
 ### Done:
