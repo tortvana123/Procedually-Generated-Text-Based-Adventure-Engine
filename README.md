@@ -14,7 +14,7 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 * Implement the "rooms" system.
   * Basic room naming and descriptions. **_✓_**
   * Moving between rooms
-  * Add dynamic room properties, with it adding things to do in a room.
+  * Add dynamic room properties, with it adding things to do in a room. (Game class?)
 ### Future:
 * Implement a door key system and a inventory for keys. (a keyring?)
 * Implement character stats.
