@@ -1,3 +1,8 @@
+# Procedually Generated Text Based Adventure Engine
+# A GUI game engine for a procedually generatated text adventure,
+# which is intended to take place in a "dungeon" type enviroment.
+# Author: Alex Vreimann, Licence: MIT.
+
 # -----------------------------------------------------------------------
 # Imports
 # -----------------------------------------------------------------------
@@ -39,7 +44,7 @@ def yml_io(ser_type, istream=None):  # ser_type - "serialize" data into YAML or 
 
 # ----
 # Intialize data from the data file.
-def init_data():
+def import_data_from_file():
     global data
     with open(conf_file) as yaml_data:
         data = yml_io("deserialize", yaml_data)
@@ -50,17 +55,32 @@ def init_data():
 def press(btn):
     if btn == "Start Game":
         game()
-
+        
 # ----
 # Room class (WIP)
 class Room:
     def __init__(self, name, description):  # Data init
         self.name = name
         self.description = description
-    def show_room(self):
+
+    @classmethod
+    def start_room_gui(cls): # WIP
+        app.startSubWindow("Rooms")
+        app.addLabel("Title11", "Rooms")
+        app.stopSubWindow()
+        app.showSubWindow("Rooms")
+        
+    def show(self):
         app.removeAllWidgets()
         app.addLabel("Title", self.name)
         app.addLabel("Description", self.description)
+
+class Rooms_Window: # WIP
+    def __init__(self, rooms):
+        self.rooms = rooms
+
+    def show(self):
+        pass
 
 # ----
 # Room Generator
@@ -79,8 +99,10 @@ def generate_room():
 # GAME (WIP)
 def game():
     generate_room()
-    rooms[1].show_room()
-
+    rooms[1].show()
+    Room.start_room_gui()
+    
+    
 
 # ----
 # Title screen
@@ -95,10 +117,10 @@ def title_screen():
 # ----
 # Main
 def main():
-    init_data()
+    import_data_from_file()
     title_screen()
 
 
 if __name__ == "__main__":  # If the file is used as a game, not a library
     main()
-# This is a test.
+
