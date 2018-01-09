@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------
 import ruamel.yaml as yaml
 from appJar import gui
-from random import choice, choices
+from random import choice
 
 # -----------------------------------------------------------------------
 # Variables
@@ -54,33 +54,32 @@ def press(btn):
 # ----
 # Room class (WIP)
 class Room:
-    def __init__(self, name):  # Data init
+    def __init__(self, name, description):  # Data init
         self.name = name
-    def display_name(self):
-        print(self.name)
+        self.description = description
+    def show_room(self):
+        app.removeAllWidgets()
+        app.addLabel("Title", self.name)
+        app.addLabel("Description", self.description)
 
 # ----
 # Room Generator
 def generate_room():
-	global data
-	global rooms
-	global room_amount
-	room_amount += 1
+    global data
+    global rooms
+    global room_amount
+    room_amount += 1
 	
-	room_type = choices(data["room_type"]) # To do - add chances to room types happening. random.randrange?
-	rooms[room_amount] = Room(room_type)
+    room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
+    room_description = choice(data["room_descriptions"])
+    rooms[room_amount] = Room(room_type, room_description)
 	
 	
 # ----
 # GAME (WIP)
 def game():
     generate_room()
-    print(rooms)
-    for i in range(1,room_amount+1):
-        rooms[i].display_name()
-
-    # app.setLabel("Title_Label", choice(data["room_names"]))
-    # app.setLabel("Message", choice(data["room_descriptions"]))
+    rooms[1].show_room()
 
 
 # ----
