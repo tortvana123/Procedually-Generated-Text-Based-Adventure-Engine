@@ -6,13 +6,15 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 * appjar for simple GUI (needs TKinter as the master library)
 
 ## To-do list:
-* Redo the YAML import with try/except
-* Implement room generation into the Room class.
+* ~~Redo the YAML import with try/except~~
+
 
 ## Roadmap:
 ### Done:
 * Implement the YAML data loading. **_✓_**
 * Implement a title screen **_✓_**
+* Implement room generation into the Room class. **_✓_**
+
 ### In Progress:
 * Implement the "rooms" system.
  * Basic room naming and descriptions. **_✓_**
