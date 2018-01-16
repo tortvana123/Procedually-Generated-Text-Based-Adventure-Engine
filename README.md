@@ -18,9 +18,9 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 ### In Progress:
 * Implement the "rooms" system.
  * Basic room naming and descriptions. **_✓_**
- * Moving between rooms
+ * Dropdown list for actions (WIP)
  * YAML file
-   * Add possible room properties/actions. (Has monster, has item, shop etc.)
+   * Add possible room properties/actions. (Has monster, has item, shop, can you move to the next room? etc.)
    * Add a few room descriptions with accociated properties and room specific options.
 ### Future:
 * Implement a door key system and a inventory for keys. (a keyring?)
