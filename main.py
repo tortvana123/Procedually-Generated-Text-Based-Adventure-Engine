@@ -3,29 +3,28 @@
 # which is intended to take place in a "dungeon" type enviroment.
 # Author: Alex Vreimann, Licence: MIT.
 
-# -----------------------------------------------------------------------
+# ----
 # Imports
-# -----------------------------------------------------------------------
+# ----
 import ruamel.yaml as yaml
 from appJar import gui
 from random import choice
 
-# -----------------------------------------------------------------------
+# ----
 # Variables
-# -----------------------------------------------------------------------
+# ----
 conf_file = "info.yaml"
 rooms = {}
-room_amount = 0
-# -----------------------------------------------------------------------
+# ----
 # Functions and classes
-# -----------------------------------------------------------------------
+# ----
 
 # ----
-# YAML input/output, compatible with old and new versions of ruamel.yaml
+# YAML input/output, compatible with older and newer versions of ruamel.yaml (Working with 0.15.35)
 def yml_io(ser_type, istream=None):  # ser_type - "serialize" data into YAML or "deserialize" data from YAML; istream - input data
     ostream = ""
 
-    if yaml.version_info < (0, 15):
+    if yaml.version_info < (0, 15): # Versions before 0.15 used a different syntax.
         if ser_type == "deserialize":
             ostream = yaml.safe_load(istream)
             return ostream
@@ -33,7 +32,7 @@ def yml_io(ser_type, istream=None):  # ser_type - "serialize" data into YAML or 
             yaml.safe_dump(istream, ostream)
             return ostream
     else:
-        yml = yaml.YAML(typ='safe', pure=True)  # 'safe' load and dump
+        yml = yaml.YAML(typ='safe', pure=True)  # Using new syntax.
         if ser_type == "deserialize":
             ostream = yml.load(istream)
             return ostream
@@ -55,53 +54,50 @@ def import_data_from_file():
 def press(btn):
     if btn == "Start Game":
         game()
+    if btn == "Select": # Testing.
+        if app.getOptionBox("What to do next?:") == "Show Room List":
+            print(rooms)
+    
         
 # ----
 # Room class (WIP)
 class Room:
-    def __init__(self, name, description):  # Data init
+    room_amount = 0
+    current_room = 0
+    
+    def __init__(self, id, name, description):  # Data init
+        self.id = id
         self.name = name
         self.description = description
 
     @classmethod
-    def start_room_gui(cls): # WIP
-        app.startSubWindow("Rooms")
-        app.addLabel("Title11", "Rooms")
-        app.stopSubWindow()
-        app.showSubWindow("Rooms")
+    def generate_room(cls):
+        # Make data available from external variables
+        global data
+        global rooms
+        # Add one to the amount of rooms, for assigning an id.
+        cls.room_amount += 1
+	#Room properties
+        room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
+        room_description = choice(data["room_descriptions"])
+        # Initialize object
+        rooms[cls.room_amount] = Room(cls.room_amount, room_type, room_description) # 1st is room ID.
         
-    def show(self):
+    def show_room(self):
         app.removeAllWidgets()
-        app.addLabel("Title", self.name)
+        current_room = self.id
+        app.addLabel("Title", self.name+str(self.id))
         app.addLabel("Description", self.description)
+        app.addLabelSpinBox("What to do next?:", ["ayy", "lmao", "testing", "Open Room List"])
+        app.addButton("Select", press)
+        
+        
 
-class Rooms_Window: # WIP
-    def __init__(self, rooms):
-        self.rooms = rooms
-
-    def show(self):
-        pass
-
-# ----
-# Room Generator
-def generate_room():
-    global data
-    global rooms
-    global room_amount
-    room_amount += 1
-	
-    room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
-    room_description = choice(data["room_descriptions"])
-    rooms[room_amount] = Room(room_type, room_description)
-	
-	
 # ----
 # GAME (WIP)
 def game():
-    generate_room()
-    rooms[1].show()
-    Room.start_room_gui()
-    
+    Room.generate_room()
+    rooms[1].show_room()
     
 
 # ----
