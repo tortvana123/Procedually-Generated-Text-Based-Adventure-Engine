@@ -1,4 +1,4 @@
-#Title Screen
+# Title Screen info
 title_titlebar: "GAME TITLE"
 title_label: "\"Welcome to the Dungeon\""
 title_description: |-
@@ -6,11 +6,19 @@ title_description: |-
     Here is some information.
     More information.
     Press "Start Game" to start the game.
-room_type:
-    - Cave
-    - Store
-    - Cavern
-    - Passage
+# 
+room_types:
+ -
+  - Empty
+   -
+    - Dog
+     - Goldfish
+ -
+  - Monster
+   -
+    - Python
+    - Lion
+    - Tiger
 room_descriptions:
     - |-
         A dark room. There is something breathing in the distance.

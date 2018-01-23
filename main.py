@@ -8,7 +8,7 @@
 # ----
 import ruamel.yaml as yaml
 from appJar import gui
-from random import choice
+from random import choice, randrange
 
 # ----
 # Variables
@@ -20,7 +20,13 @@ rooms = {}
 # ----
 
 # ----
-# YAML input/output, compatible with older and newer versions of ruamel.yaml (Working with 0.15.35)
+# Quit Function
+def quit_program(): 
+    raise SystemExit
+
+        
+# ----
+# YAML input/output, compatible with older and newer versions of ruamel.yaml (Confirmed working with 0.15.35)
 def yml_io(ser_type, istream=None):  # ser_type - "serialize" data into YAML or "deserialize" data from YAML; istream - input data
     ostream = ""
 
@@ -50,25 +56,15 @@ def import_data_from_file():
 
 
 # ----
-# Button function
-def press(btn):
-    if btn == "Start Game":
-        game()
-    if btn == "Select": # Testing.
-        if app.getOptionBox("What to do next?:") == "Show Room List":
-            print(rooms)
-    
-        
-# ----
 # Room class (WIP)
 class Room:
     room_amount = 0
     current_room = 0
     
-    def __init__(self, id, name, description):  # Data init
+    def __init__(self, id, type):  # Data init
         self.id = id
-        self.name = name
-        self.description = description
+        self.type = type
+        #self.description = description
 
     @classmethod
     def generate_room(cls):
@@ -77,28 +73,67 @@ class Room:
         global rooms
         # Add one to the amount of rooms, for assigning an id.
         cls.room_amount += 1
-	#Room properties
-        room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
-        room_description = choice(data["room_descriptions"])
+	    #Room properties
+        #room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
+        #room_description = choice(data["room_descriptions"])
+        # Pick a random number in a range from 0 to 100, for a precentage chance, and pick a room type based on that.
+        x = randrange(0, 101)
+        if x <= 55:
+            room_type = "Monster"
+        elif x > 55 and x <= 80 :
+            room_type = "Item"
+        elif x > 80 and x <= 90:
+            room_type = "Store"
+        elif x == 91:
+            room_type = "Instant Death"
+        elif x > 91:
+            room_type = "Nothing"
         # Initialize object
-        rooms[cls.room_amount] = Room(cls.room_amount, room_type, room_description) # 1st is room ID.
+        rooms[cls.room_amount] = Room(cls.room_amount, room_type) # 1st is room ID.
         
     def show_room(self):
         app.removeAllWidgets()
         current_room = self.id
-        app.addLabel("Title", self.name+str(self.id))
-        app.addLabel("Description", self.description)
-        app.addLabelSpinBox("What to do next?:", ["ayy", "lmao", "testing", "Open Room List"])
-        app.addButton("Select", press)
+        app.addButton("foo", room_btn) # TESTING
+        if self.type != "Store":
+            app.addLabel("Title", self.id)
+            app.addLabel("Type", self.type)
+            if self.type == "Monster":
+                #app.addLabelSpinBox("What to do next?:", ["Show Room List"])
+                pass
+            if self.type == "Item":
+                pass
+            if self.type == "Instant Death":
+                pass
+            if self.type == "Nothing":
+                pass
+        elif self.type == "Store":
+            app.addLabel("Store")
+            app.addLabel("Still a WIP, please ignore.")
+        #app.addButton("Select", press)
         
-        
+    def testing(self):
+        print(self.id)
+        print(self.name)
+        print(self.description)
+
 
 # ----
-# GAME (WIP)
-def game():
-    Room.generate_room()
-    rooms[1].show_room()
-    
+# Button function - Rooms
+def room_btn(button):
+    if button == "foo":
+        Room.generate_room()
+        rooms[Room.room_amount].show_room()
+
+# ----
+# Button function - Start/Stop
+def start_btn(button):
+    if button == "Start Game":
+        Room.generate_room()
+        rooms[1].show_room()
+    elif button == "Quit":
+        quit_program()
+        
 
 # ----
 # Title screen
@@ -107,7 +142,8 @@ def title_screen():
     with gui(data["title_titlebar"]) as app:
         app.addLabel("Title_Label", data["title_label"])
         app.addLabel("Message", data["title_description"])
-        app.addButton("Start Game", press)
+        app.addButton("Start Game", start_btn)
+        app.addButton("Quit", start_btn)
 
 
 # ----
@@ -117,6 +153,6 @@ def main():
     title_screen()
 
 
-if __name__ == "__main__":  # If the file is used as a game, not a library
+if __name__ == "__main__":  # If the file is used as a program, not a library etc.
     main()
 
