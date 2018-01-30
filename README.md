@@ -19,7 +19,8 @@ A GUI game engine for a procedually generatated text adventure, which is intende
 * Implement the "rooms" system.
  * Basic room naming and descriptions. **_✓_**
  * Dropdown list for actions (WIP)
- * Saving system (http://appjar.info/pythonSettings/)
+ * Saving system
+ * Map? (http://appjar.info/pythonDevWidgets/#turtle)
  * YAML file
    * Add possible room properties/actions. (Has monster, has item, shop, can you move to the next room? etc.)
    * Add a few room descriptions with accociated properties and room specific options.
