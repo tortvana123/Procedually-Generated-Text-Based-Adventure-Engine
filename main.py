@@ -9,6 +9,7 @@
 import ruamel.yaml as yaml
 from appJar import gui
 from random import choice, randrange
+from time import sleep
 
 # ----
 # Variables
@@ -23,7 +24,6 @@ rooms = {}
 # Quit Function
 def quit_program(): 
     raise SystemExit
-
         
 # ----
 # YAML input/output, compatible with older and newer versions of ruamel.yaml (Confirmed working with 0.15.35)
@@ -94,10 +94,10 @@ class Room:
     def show_room(self):
         app.removeAllWidgets()
         current_room = self.id
-        app.addButton("foo", room_btn) # TESTING
+        #app.addButton("foo", room_btn) # TESTING
         if self.type != "Store":
-            app.addLabel("Title", self.id)
-            app.addLabel("Type", self.type)
+            #app.addLabel("Title", self.id) # TESTING
+            #app.addLabel("Type", self.type) # TESTING
             if self.type == "Monster":
                 #app.addLabelSpinBox("What to do next?:", ["Show Room List"])
                 pass
@@ -110,7 +110,8 @@ class Room:
         elif self.type == "Store":
             app.addLabel("Store")
             app.addLabel("Still a WIP, please ignore.")
-        #app.addButton("Select", press)
+        global data
+        app.addButton("Select", room_action(data))
         
     def testing(self):
         print(self.id)
@@ -120,10 +121,11 @@ class Room:
 
 # ----
 # Button function - Rooms
-def room_btn(button):
-    if button == "foo":
-        Room.generate_room()
-        rooms[Room.room_amount].show_room()
+def room_action(test):
+    print(test)
+    #elif button == "foo": # testing
+        #Room.generate_room()
+        #rooms[Room.room_amount].show_room()
 
 # ----
 # Button function - Start/Stop

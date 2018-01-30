@@ -6,19 +6,6 @@ title_description: |-
     Here is some information.
     More information.
     Press "Start Game" to start the game.
-# 
-room_types:
- -
-  - Empty
-   -
-    - Dog
-     - Goldfish
- -
-  - Monster
-   -
-    - Python
-    - Lion
-    - Tiger
 room_descriptions:
     - |-
         A dark room. There is something breathing in the distance.
@@ -27,3 +14,13 @@ room_descriptions:
         A sword is embedded in a stone in front of you.
     - |-
         You fall down a pit and die.
+
+rooms:
+    1:
+     has_monster: True
+     has_item: False
+     description: A dark room. There is something breathing in the distance.
+    2:
+     has_monster: False
+     has_item: False
+     description: stuff
