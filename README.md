@@ -1,3 +1,27 @@
+# "Procedually Generated" Cell-based Text Adventure Engine V0.01
+A game engine for a text-based adventure game, which uses cells. 
+It uses a very simple multi-platform GUI library, to make the games accessible to more people.  
+Made with the intention of it being as simple to use as possible.
+
+## Required modules:
+* ruamel.yaml for readable game data files
+* appJar as the simple GUI library
+
+## To-Do:
+* Start rewrite of the engine.
+
+## Done:
+* Rewrote the readme.
+
+## Engine step-by-step
+* Start Screen
+* Load game data
+* Character creation
+* Room generation
+* Show room
+* Actions
+
+# OLD README
 # "Procedually Generated" Text Based Adventure Engine
 A GUI game engine for a procedually generatated text adventure, which is intended to take place in a "dungeon" type enviroment.
 
