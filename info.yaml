@@ -15,12 +15,21 @@ room_descriptions:
     - |-
         You fall down a pit and die.
 
-rooms:
-    1:
-     has_monster: True
-     has_item: False
-     description: A dark room. There is something breathing in the distance.
-    2:
-     has_monster: False
-     has_item: False
-     description: stuff
+# Four options: Regular room - 85% chance; Store 10% ; Special room 5%; InstaDeath 1%
+room_chance_weight:
+    - 0.85
+    - 0.1
+    - 0.05
+    - 0.01
+
+room_data:
+    #1:
+     #has_monster: True
+     #has_item: False
+     #description: A dark room. There is something breathing in the distance.
+    #2:
+     #has_monster: False
+     #has_item: False
+     #description: stuff
+
+# items: (To be Implemented, for stores n stuff)

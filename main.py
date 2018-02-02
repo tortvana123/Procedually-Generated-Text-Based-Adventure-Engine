@@ -8,7 +8,7 @@
 # ----
 import ruamel.yaml as yaml
 from appJar import gui
-from random import choice, randrange
+from random import choices
 from time import sleep
 
 # ----
@@ -61,10 +61,10 @@ class Room:
     room_amount = 0
     current_room = 0
     
-    def __init__(self, id, type):  # Data init
+    def __init__(self, id, type, action):  # Data init
         self.id = id
         self.type = type
-        #self.description = description
+        self.action = action
 
     @classmethod
     def generate_room(cls):
@@ -77,7 +77,9 @@ class Room:
         #room_type = choice(data["room_type"])# To do - add chances to room types happening. random.randrange?
         #room_description = choice(data["room_descriptions"])
         # Pick a random number in a range from 0 to 100, for a precentage chance, and pick a room type based on that.
-        x = randrange(0, 101)
+
+        room_type
+        """x = randrange(0, 101)
         if x <= 55:
             room_type = "Monster"
         elif x > 55 and x <= 80 :
@@ -88,36 +90,32 @@ class Room:
             room_type = "Instant Death"
         elif x > 91:
             room_type = "Nothing"
+        """
+        room_actions = "Something"
         # Initialize object
-        rooms[cls.room_amount] = Room(cls.room_amount, room_type) # 1st is room ID.
+        rooms[cls.room_amount] = Room(cls.room_amount, room_type, room_actions) # 1st is room ID.
         
     def show_room(self):
         app.removeAllWidgets()
         current_room = self.id
-        #app.addButton("foo", room_btn) # TESTING
-        if self.type != "Store":
-            #app.addLabel("Title", self.id) # TESTING
-            #app.addLabel("Type", self.type) # TESTING
-            if self.type == "Monster":
-                #app.addLabelSpinBox("What to do next?:", ["Show Room List"])
-                pass
-            if self.type == "Item":
-                pass
-            if self.type == "Instant Death":
-                pass
-            if self.type == "Nothing":
-                pass
-        elif self.type == "Store":
-            app.addLabel("Store")
-            app.addLabel("Still a WIP, please ignore.")
-        global data
-        app.addButton("Select", room_action(data))
-        
-    def testing(self):
-        print(self.id)
-        print(self.name)
-        print(self.description)
+        #if self.type != "Store":
+         #   if self.type == "Monster":
+          #      pass
+           # if self.type == "Item":
+            #    pass
+            #if self.type == "Instant Death":
+             #   pass
+            #if self.type == "Nothing":
+             #   pass
+        #elif self.type == "Store":
+         #   app.addLabel("Store")
+          #  app.addLabel("Still a WIP, please ignore.")
+        app.addButton("Select", Room.action)
 
+    @classmethod
+    def action(cls, action):
+        global data
+        print(data)
 
 # ----
 # Button function - Rooms
@@ -128,14 +126,13 @@ def room_action(test):
         #rooms[Room.room_amount].show_room()
 
 # ----
-# Button function - Start/Stop
+# Button function - Start/Stop Program
 def start_btn(button):
     if button == "Start Game":
         Room.generate_room()
         rooms[1].show_room()
     elif button == "Quit":
         quit_program()
-        
 
 # ----
 # Title screen
